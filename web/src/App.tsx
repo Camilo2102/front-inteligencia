@@ -1,11 +1,20 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
+const high_level_languages = [
+  "Python",
+  "JavaScript",
+  "Java",
+  "C#",
+  "PHP",
+  "Kotlin"
+];
+
 function App() {
   const [code, setCode] = useState('');
   const [translatedCode, setTranslatedCode] = useState('');
-  const [inputLanguage, setInputLanguage] = useState('javascript');
-  const [targetLanguage, setTargetLanguage] = useState('python');
+  const [inputLanguage, setInputLanguage] = useState('JavaScript');
+  const [targetLanguage, setTargetLanguage] = useState('Python');
   const [output, setOutput] = useState('');
   const [paramsValues, setParamsValues] = useState('');
   const [isTranslating, setIsTranslating] = useState(false);
@@ -109,10 +118,9 @@ function App() {
             value={inputLanguage}
             onChange={(e) => setInputLanguage(e.target.value)}
           >
-            <option value="javascript">JavaScript</option>
-            <option value="python">Python</option>
-            <option value="ruby">Ruby</option>
-            <option value="java">Java</option>
+            {high_level_languages.map(language => (
+              <option key={language} value={language.toLowerCase()}>{language}</option>
+            ))}
           </select>
         </div>
         <div className="mb-3">
@@ -125,10 +133,9 @@ function App() {
             value={targetLanguage}
             onChange={(e) => setTargetLanguage(e.target.value)}
           >
-            <option value="javascript">JavaScript</option>
-            <option value="python">Python</option>
-            <option value="ruby">Ruby</option>
-            <option value="java">Java</option>
+            {high_level_languages.map(language => (
+              <option key={language} value={language.toLowerCase()}>{language}</option>
+            ))}
           </select>
         </div>
         <button
